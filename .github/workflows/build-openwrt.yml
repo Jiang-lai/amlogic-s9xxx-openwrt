@@ -18,6 +18,7 @@ on:
           - openwrt-main
           - lede-master
           - immortalwrt-master
+          - immortalwrt-23.05.4
       openwrt_board:
         description: "Select device board"
         required: false
@@ -295,6 +296,10 @@ jobs:
           elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
               REPO_URL="https://github.com/immortalwrt/immortalwrt"
               REPO_BRANCH="master"
+              TAGS_NAME="immortalwrt"
+          elif [[ "${{ inputs.source_branch }}" == *"immortalwrt-23.05.4"* ]]; then
+              REPO_URL="https://github.com/immortalwrt/immortalwrt"
+              REPO_BRANCH="v23.05.4"
               TAGS_NAME="immortalwrt"
           else
               echo "Unknown source code repository."
