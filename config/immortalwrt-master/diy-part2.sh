@@ -21,6 +21,8 @@ echo "DISTRIB_SOURCECODE='immortalwrt'" >>package/base-files/files/etc/openwrt_r
 # ------------------------------- Main source ends -------------------------------
 
 # ------------------------------- Other started -------------------------------
+# Fix coremark build errors
+sed -i 's/mkdir/mkdir -p/g' feeds/packages/utils/coremark/Makefile
 # replace the default startup script and configuration of Tailscale
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 # Add luci-app-tailscale
