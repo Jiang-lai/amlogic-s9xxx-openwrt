@@ -21,7 +21,11 @@ echo "DISTRIB_SOURCECODE='immortalwrt'" >>package/base-files/files/etc/openwrt_r
 # ------------------------------- Main source ends -------------------------------
 
 # ------------------------------- Other started -------------------------------
-#
+# replace the default startup script and configuration of Tailscale
+sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+# Add luci-app-tailscale
+rm -rf package/luci-app-tailscale
+git clone https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
 # Add luci-app-amlogic
 rm -rf package/luci-app-amlogic
 git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
